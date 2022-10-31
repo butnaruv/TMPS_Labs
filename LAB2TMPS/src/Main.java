@@ -1,3 +1,5 @@
+import Factory.FlowersFactory;
+import Factory.FlowersInterface;
 import Singleton.Item;
 import Singleton.SingeltonItem;
 
@@ -15,5 +17,14 @@ public class Main {
 
         System.out.println(firstPurchase.Count());
         System.out.println(secondPurchase.Count());
+
+        //Test factory method design pattern
+        var product = FlowersFactory.GetTypeOfProduct("Basket");
+        if (product != null) {
+            System.out.println(product.createProduct(15, "roses"));
+        } else {
+            System.out.println("No such a product in stock");
+        }
+
     }
 }
