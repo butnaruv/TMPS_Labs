@@ -1,12 +1,20 @@
+import Builder.Builder;
+import Builder.ConcreteBuilders.FlowersAndBookBuilder;
+import Builder.ConcreteBuilders.FlowersAndChocolateBuilder;
+import Builder.ConcreteBuilders.FlowersAndPlushToyBuilder;
+import Builder.Director;
+import Builder.Feature.*;
+import Builder.Products.FlowersAndBook;
+import Builder.Products.FlowersAndChocolate;
+import Builder.Products.FlowersAndPlushToy;
 import Factory.FlowersFactory;
-import Factory.FlowersInterface;
 import Singleton.Item;
 import Singleton.SingeltonItem;
 
 public class Main {
     public static void main(String[] args) {
 
-        //Test singelton design pattern
+        //Test singleton design pattern
         SingeltonItem firstPurchase = SingeltonItem.getInstance();
         firstPurchase.AddItems(new Item("11 white roses", 15));
         firstPurchase.AddItems(new Item("15 yellow dahlia", 18));
@@ -25,6 +33,22 @@ public class Main {
         } else {
             System.out.println("No such a product in stock");
         }
+        //Test builder design pattern
+        Director director = new Director();
+        FlowersAndChocolateBuilder _FlowersAndChocolateBuilder = new FlowersAndChocolateBuilder();
+        director.createSurpriseWithChocolate(_FlowersAndChocolateBuilder, ProductType.Basket, 15, Color.purple, Flower.Iris, ChocolateType.Milk);
+        FlowersAndChocolate flowersAndChocolate = _FlowersAndChocolateBuilder.getResult();
+        flowersAndChocolate.print();
+
+        FlowersAndBookBuilder _FlowersAndBookBuilder = new FlowersAndBookBuilder();
+        director.createSurpriseWithBookBuilder( _FlowersAndBookBuilder, ProductType.Bouquet, 19, Color.white, Flower.Dahlia, Book.Pe_aripile_vantului);
+        FlowersAndBook flowersAndBook = _FlowersAndBookBuilder.getResult();
+        flowersAndBook.print();
+
+        FlowersAndPlushToyBuilder _FlowersAndPlushToyBuilder = new FlowersAndPlushToyBuilder();
+        director.createSurpriseWithPlushToyBuilder(_FlowersAndPlushToyBuilder, ProductType.Plant_with_Flowers, 1,Color.yellow, Flower.Tulips, PlushToy.Bear);
+        FlowersAndPlushToy flowersAndPlushToy = _FlowersAndPlushToyBuilder.getResult();
+        flowersAndPlushToy.print();
 
     }
 }

@@ -2,18 +2,19 @@ package Builder.ConcreteBuilders;
 
 import Builder.Builder;
 import Builder.Feature.*;
+import Builder.Products.FlowersAndBook;
 import Builder.Products.FlowersAndChocolate;
 
-public class FlowersAndChocolateBuilder implements Builder {
+public class FlowersAndBookBuilder implements Builder {
+
     private SurpriseType surpriseType;
     private ProductType productType;
     private int numberOfFlowers;
     private Color color;
     private Flower flower;
     private ChocolateType chocolateType;
-    private PlushToy plushToy;
     private Book book;
-
+    private PlushToy plushToy;
 
     @Override
     public void setSurpriseType(SurpriseType surpriseType) {
@@ -55,9 +56,7 @@ public class FlowersAndChocolateBuilder implements Builder {
     public void setTypeOfBook(Book book) {
         this.book = book;
     }
-
-    public FlowersAndChocolate getResult(){
-    return new FlowersAndChocolate(surpriseType, productType, numberOfFlowers, color, flower, chocolateType);
+    public FlowersAndBook getResult(){
+        return new FlowersAndBook(surpriseType, productType, numberOfFlowers, color, flower, book);
     }
-
 }
