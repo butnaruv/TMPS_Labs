@@ -1,21 +1,19 @@
 package Composite;
 
-
-public class Flower implements ComplexSurprise {
-    private String flowerName;
+//Meal class (leaf) is a basic element of a tree that does not have sub-elements.
+// Since the leaf component has no one to delegate the work to, it ends up doing most of the real work.
+public class Meal implements ComplexMeal {
+    private String mealName;
     private int price;
-    private int nrOfFlowers;
 
-    public Flower(String flowerName, int price, int nrOfFlowers) {
-        this.flowerName = flowerName;
+    public Meal(String mealName, int price) {
+        this.mealName = mealName;
         this.price = price;
-        this.nrOfFlowers = nrOfFlowers;
     }
 
     @Override
     public int calculatePrice() {
-        int totalPrice = nrOfFlowers * price;
-        System.out.println(nrOfFlowers + " " + flowerName + " are " + totalPrice + " euros.");
-        return totalPrice;
+        System.out.println(mealName + " is " + price +  " euros.");
+        return price;
     }
 }

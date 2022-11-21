@@ -1,6 +1,11 @@
-package Decorator;
+package Decorator.Types;
 
 
+import Decorator.BaseDecorator;
+import Decorator.Notification;
+
+//A SMSDecorator defines extra behaviors that can be added dynamically to components.
+// The SMSDecorator overrides the methods of the base decorator and executes their behavior either before or after the parent method is called.
 public class SMSDecorator extends BaseDecorator {
 
     public SMSDecorator(Notification wrappee) {
